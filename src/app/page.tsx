@@ -1,13 +1,7 @@
-import Banner from '@/app/(home)/components/banner'
-import React from 'react'
+import React from "react";
 
 const page = () => {
-  return (
-    <>
-    <Banner />
-    </>
-  )
-}
+  return <div>page</div>;
+};
 
-
-export default page
+export default page;
