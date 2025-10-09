@@ -7,15 +7,16 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "db:generate":"drizzle-kit generate --config=drizzle.config.ts",
-   "db:run":"node -r esbuild-register ./migrate.ts" 
+    "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
+    "db:run": "node -r esbuild-register ./migrate.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.44.6",
     "next": "15.5.4",
     "postgres": "^3.4.7",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
