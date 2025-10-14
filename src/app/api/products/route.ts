@@ -1,12 +1,14 @@
 import { db } from "@/lib/db/db";
 import { products } from "@/lib/db/schema";
 import { productSchema } from "@/lib/validation/productSchema";
+import { desc } from "drizzle-orm";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
 export async function POST(request: Request) {
+  // check the user auth
   const data = await request.formData();
-  console.log(data);
+  // console.log(data);
   let validatedData;
   try {
     validatedData = productSchema.parse({
@@ -64,4 +66,20 @@ export async function POST(request: Request) {
     { message: `the taske has been done  as ${data}` },
     { status: 200 }
   );
+}
+
+export async function GET() {
+
+ try {
+   const allProducts = await db
+    .select()
+    .from(products)
+    .orderBy(desc(products.id));
+  return Response.json(allProducts);
+ } catch (error) {
+  return Response.json({
+    message:"failed to fetech data"
+  },
+{status:400})
+ }
 }
