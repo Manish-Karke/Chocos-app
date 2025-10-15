@@ -1,6 +1,7 @@
 import { db } from "@/lib/db/db";
 import { wareHouses } from "@/lib/db/schema";
 import { warehouseSchema } from "@/lib/validation/wareHouseSchema";
+import { desc } from "drizzle-orm";
 
 export async function POST(request: Request) {
   // todo::check auth
@@ -13,7 +14,7 @@ export async function POST(request: Request) {
   } catch (error) {
     return Response.json(
       {
-        error: error,
+        message: error,
       },
       {
         status: 404,
@@ -25,10 +26,10 @@ export async function POST(request: Request) {
     await db.insert(wareHouses).values(validatedData);
     return Response.json(
       {
-        maessage: "ok",
+        message: "ok",
       },
       {
-        status: 201,
+        status: 200,
       }
     );
   } catch (error) {
@@ -38,6 +39,33 @@ export async function POST(request: Request) {
       },
       {
         status: 500,
+      }
+    );
+  }
+}
+
+export async function GET(request: Request) {
+  try {
+    const warehouse = await db
+      .select()
+      .from(wareHouses)
+      .orderBy(desc(wareHouses.id));
+
+    return Response.json(
+      {
+        warehouse,
+      }
+      // {
+      //   status: 200,
+      // }
+    );
+  } catch (error) {
+    return Response.json(
+      {
+        message: "this is the error from warehouse",
+      },
+      {
+        status: 404,
       }
     );
   }
