@@ -72,7 +72,7 @@ export const inventories = pgTable("inventories", {
   orderId: integer("order_id").references(() => orders.id, {
     onDelete: "set null",
   }),
-  warehouseId: integer("warehouse_id").references(() => wareHouses.id, {
+  wareHousesId: integer("warehouse_id").references(() => wareHouses.id, {
     onDelete: "cascade",
   }),
   productId: integer("product_id").references(() => products.id, {
