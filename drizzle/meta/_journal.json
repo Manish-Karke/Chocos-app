@@ -8,6 +8,13 @@
       "when": 1760539119833,
       "tag": "0000_slim_unicorn",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1760628258153,
+      "tag": "0001_smooth_thunderbolt",
+      "breakpoints": true
     }
   ]
 }
