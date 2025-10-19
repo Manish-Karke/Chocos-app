@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -33,7 +33,6 @@ import { getServerSession } from "next-auth";
 
 import Signout from "./_components/signout";
 import { authOptions } from "@/lib/auth/authOpreations";
-import { Button } from "@/components/ui/button";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
