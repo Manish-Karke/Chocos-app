@@ -48,3 +48,8 @@ export const createInventories = async (data: InventoryData) => {
   const response = await api.post("/inventories", data);
   return response.data;
 };
+
+export const getSingleProduct = async (id: string) => {
+  const response = await api.get(`/products/${id}`);
+  return response.data;
+};
