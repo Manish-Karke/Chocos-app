@@ -1,7 +1,7 @@
 "use client";
 import { getSingleProduct } from "@/http/api";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import Navigation from "./../../_components/header";
 import Image from "next/image";
@@ -22,10 +22,15 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-
+import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 const SingleProduct = () => {
   const params = useParams();
   const id = params.id;
+  const pathname = usePathname()
+
+  const { data: session } = useSession();
 
   const form = useForm<z.infer<typeof orderSchema>>({
     defaultValues: {
@@ -43,6 +48,7 @@ const SingleProduct = () => {
   type FormValues = z.infer<typeof orderSchema>;
   const onSubmit = (values: FormValues) => {
     // submiting the form
+    console.log("values", values);
   };
 
   return (
@@ -179,7 +185,16 @@ const SingleProduct = () => {
                     </div>
                     <Separator className="my-6 bg-brown-900" />
 
-                        <div className="f`"></div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-semibold">$50</span>
+                      {session ? (
+                        <Button type="submit">Buy Now</Button>
+                      ) : (
+                        <Link href={`/api/auth/signin?callbackUrl=${pathname}`}>
+                          <Button type="submit">Buy Now</Button>
+                        </Link>
+                      )}
+                    </div>
                   </form>
                 </Form>
               </div>

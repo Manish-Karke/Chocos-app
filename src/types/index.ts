@@ -31,3 +31,12 @@ export interface InventoryData {
   wareHousesId: number;
   productId: number;
 }
+
+export interface Session {
+  user: {
+    name: string;
+    email: string;
+    image: string;
+  };
+  expires: string;
+}
