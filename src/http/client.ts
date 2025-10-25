@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL ="https://my-book-store-n6ii.vercel.app/products"
+const baseURL ="https://my-book-store-n6ii.vercel.app/api"
 
 export const api = axios.create({
   baseURL,
