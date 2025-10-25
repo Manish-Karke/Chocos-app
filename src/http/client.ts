@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const baseURL =
-  process.env.NODE_ENV === "production"
-    ? "" // relative URLs for deployed app on Vercel
-    : "http://localhost:3000/api"; // local development
+const baseURL ="https://my-book-store-n6ii.vercel.app/products"
 
 export const api = axios.create({
   baseURL,
